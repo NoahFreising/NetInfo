@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-
+// extend String to allow truncating
 // from https://gist.github.com/budidino/8585eecd55fd4284afaaef762450f98e
 extension String {
   /*
@@ -22,8 +22,15 @@ extension String {
   }
 }
 
+struct InterfaceWithIP: Hashable{
+    var name: String
+    var ipv4Addr: String?
+    var ipv6Addr: String?
+}
+
 struct NetInfoMenu: View {
-    @State var interfaces: [InterfaceWithIP] = getNetworkInterfaces()!
+    @Environment(\.openWindow) var openWindow
+    @State var interfaces: Set<InterfaceWithIP> = getNetworkInterfaces()!
     @Binding var selectedInterface: String
     @Binding var preferIpv6: Bool
     @Binding var showHostName: Bool
@@ -32,41 +39,67 @@ struct NetInfoMenu: View {
     
     var body: some View {
         VStack {
-            Text("Host: \(hostName)")
-            Picker("Choose Interface", selection: $selectedInterface) {
-                ForEach(Array(createDisplayList(interfaces: interfaces, preferIpv6: preferIpv6).keys), id:\.self) { interface in
+            Group {
+                Text("IPv4: \(interfaces.first { $0.name == selectedInterface}!.ipv4Addr ?? "")")
+                Text("IPv6: \(interfaces.first { $0.name == selectedInterface}!.ipv6Addr ?? "")")
+                Text("Host: \(hostName)")
+                
+                Button(action: {
+                    let pasteBoard = NSPasteboard.general
+                    pasteBoard.clearContents()
+                    pasteBoard.setString(createDisplayString(interfaceName: selectedInterface, preferIpv6: preferIpv6, showHostName: showHostName, hostName: hostName, truncLength: truncLength) ?? "", forType: .string)
+                }) {
+                    Text("Copy IP to clipboard")
+                }.keyboardShortcut("c")
+                
+                Picker("Choose Interface", selection: $selectedInterface) {
+                    ForEach(Array(createDisplayList(interfaces: interfaces, preferIpv6: preferIpv6).keys), id:\.self) { interface in
                         Text(interface)
+                    }
                 }
             }
+            
             Divider()
+            
             Toggle(isOn: $preferIpv6) {
                 Text("Prefer IPv6")
             }.keyboardShortcut("6")
+            
             Toggle(isOn: $showHostName) {
                 Text("Show Hostname in Menubar")
-            }.keyboardShortcut("H")
+            }.keyboardShortcut("h")
+            
             Divider()
+            
+            Button("Options") {
+                openWindow(id: "options")
+            }.keyboardShortcut("o")
+            
             Button("Quit") {
                 NSApplication.shared.terminate(nil)
             }.keyboardShortcut("q")
+
         }
     }
 }
 
-struct InterfaceWithIP: Hashable{
-    var name: String
-    var ipv4Addr: String?
-    var ipv6Addr: String?
+func checkInterface(interface: InterfaceWithIP, interfaceName: String) -> Bool {
+    return interface.name == interfaceName
 }
 
-func createDisplayList(interfaces: [InterfaceWithIP], preferIpv6: Bool) -> Dictionary<String, String> {
+
+
+func createDisplayList(interfaces: Set<InterfaceWithIP>, preferIpv6: Bool) -> Dictionary<String, String> {
+    // Use dictionary to map interfaces to IPs and remove duplicates
     var displayList: Dictionary<String, String> = Dictionary()
     for interface in interfaces {
         if (interface.ipv6Addr != nil || interface.ipv4Addr != nil) {
             if (preferIpv6) {
+                // first try ipv6 addr
                 let text = interface.name + " - " + ((interface.ipv6Addr ?? interface.ipv4Addr) ?? "")
                 displayList.updateValue(text, forKey: interface.name)
             } else {
+                // first try ipv4 addr
                 let text = interface.name + " - " + ((interface.ipv4Addr ?? interface.ipv6Addr) ?? "")
                 displayList.updateValue(text, forKey: interface.name)
             }
@@ -75,8 +108,8 @@ func createDisplayList(interfaces: [InterfaceWithIP], preferIpv6: Bool) -> Dicti
     return displayList
 }
 
-func getNetworkInterfaces() -> [InterfaceWithIP]? {
-    var interfaces: [InterfaceWithIP] = []
+func getNetworkInterfaces() -> Set<InterfaceWithIP>? {
+    var interfaces: Set<InterfaceWithIP> = Set()
     // Get list of all interfaces on the local machine:
     var ifaddr : UnsafeMutablePointer<ifaddrs>?
     guard getifaddrs(&ifaddr) == 0 else { return nil }
@@ -90,7 +123,7 @@ func getNetworkInterfaces() -> [InterfaceWithIP]? {
         let interfaceIp = InterfaceWithIP(name: name, ipv4Addr: getNetworkAddress(interfaceName: name)
                                           , ipv6Addr: getNetworkAddress(interfaceName: name, ipv6: true) )
         
-        interfaces.append(interfaceIp)
+        interfaces.insert(interfaceIp)
     }
     freeifaddrs(ifaddr)
     return interfaces
@@ -146,11 +179,3 @@ func createDisplayString(interfaceName: String, preferIpv6: Bool, showHostName: 
         return text
     }
 }
-
-/*
-struct NetInfoMenu_Previews: PreviewProvider {
-    static var previews: some View {
-        NetInfoMenu()
-    }
-}
-*/
