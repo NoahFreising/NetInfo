@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/*
+ createDisplayString(interfaceName: selectedInterface, preferIpv6: preferIpv6, showHostName: showHostName, hostName: hostName, truncLength: truncLength) ?? "NetInfo"
+ */
+
 // extend String to allow truncating
 // from https://gist.github.com/budidino/8585eecd55fd4284afaaef762450f98e
 extension String {
@@ -26,16 +30,34 @@ struct InterfaceWithIP: Hashable{
     var name: String
     var ipv4Addr: String?
     var ipv6Addr: String?
+    
+    func getIP(preferIpv6: Bool = false) -> String {
+        if(ipv6Addr != nil && preferIpv6) {
+            return ipv6Addr!
+        } else if(ipv4Addr != nil) {
+            return ipv4Addr!
+        } else if(ipv6Addr != nil) {
+            return ipv6Addr!
+        } else {
+            return "No IP"
+        }
+    }
 }
 
 struct NetInfoMenu: View {
     @Environment(\.openWindow) var openWindow
-    @State var interfaces: Set<InterfaceWithIP> = getNetworkInterfaces()!
+    @Binding var interfaces: Set<InterfaceWithIP>
     @Binding var selectedInterface: String
     @Binding var preferIpv6: Bool
     @Binding var showHostName: Bool
     @Binding var hostName: String
     @Binding var truncLength: Int
+    @Binding var displayString: String
+    
+    private func refresh() {
+        interfaces = getNetworkInterfaces()!
+    }
+   
     
     var body: some View {
         VStack {
@@ -44,10 +66,14 @@ struct NetInfoMenu: View {
                 Text("IPv6: \(interfaces.first { $0.name == selectedInterface}!.ipv6Addr ?? "")")
                 Text("Host: \(hostName)")
                 
+                Button(action: refresh) {
+                    Text("Refresh IP Adress")
+                }.keyboardShortcut("r")
+                
                 Button(action: {
                     let pasteBoard = NSPasteboard.general
                     pasteBoard.clearContents()
-                    pasteBoard.setString(createDisplayString(interfaceName: selectedInterface, preferIpv6: preferIpv6, showHostName: showHostName, hostName: hostName, truncLength: truncLength) ?? "", forType: .string)
+                    pasteBoard.setString(createDisplayString(ipAddr: interfaces.first { $0.name == selectedInterface}!.getIP(preferIpv6: preferIpv6), showHostName: showHostName, hostName: hostName, truncLength: truncLength) ?? "", forType: .string)
                 }) {
                     Text("Copy IP to clipboard")
                 }.keyboardShortcut("c")
@@ -60,15 +86,15 @@ struct NetInfoMenu: View {
             }
             
             Divider()
-            
-            Toggle(isOn: $preferIpv6) {
-                Text("Prefer IPv6")
-            }.keyboardShortcut("6")
-            
-            Toggle(isOn: $showHostName) {
-                Text("Show Hostname in Menubar")
-            }.keyboardShortcut("h")
-            
+            Group {
+                Toggle(isOn: $preferIpv6) {
+                    Text("Prefer IPv6")
+                }.keyboardShortcut("6")
+                
+                Toggle(isOn: $showHostName) {
+                    Text("Show Hostname in Menubar")
+                }.keyboardShortcut("h")
+            }
             Divider()
             
             Button("Options") {
@@ -82,6 +108,8 @@ struct NetInfoMenu: View {
         }
     }
 }
+
+
 
 func checkInterface(interface: InterfaceWithIP, interfaceName: String) -> Bool {
     return interface.name == interfaceName
@@ -165,12 +193,7 @@ func getNetworkAddress(interfaceName: String, ipv6: Bool = false) -> String? {
     return address
 }
 
-func getNetworkAddressWithPreference(interfaceName: String, preferIpv6: Bool) -> String? {
-        return getNetworkAddress(interfaceName: interfaceName, ipv6: preferIpv6) ?? getNetworkAddress(interfaceName: interfaceName, ipv6: !preferIpv6)
-}
-
-func createDisplayString(interfaceName: String, preferIpv6: Bool, showHostName: Bool, hostName: String, truncLength: Int) -> String? {
-    let ipAddr = getNetworkAddressWithPreference(interfaceName: interfaceName, preferIpv6: preferIpv6)!
+func createDisplayString(ipAddr: String, showHostName: Bool, hostName: String, truncLength: Int) -> String? {
     if (showHostName) {
         let text = "\(ipAddr) - \(hostName)".trunc(length: truncLength)
         return text
@@ -179,3 +202,4 @@ func createDisplayString(interfaceName: String, preferIpv6: Bool, showHostName: 
         return text
     }
 }
+
