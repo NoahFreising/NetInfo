@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import LaunchAtLogin
 
 struct OptionsView: View {
     @Binding var truncLength: Int
     @Binding var preferIpv6: Bool
     
     var body: some View {
+        LaunchAtLogin.Toggle()
         Toggle(isOn: $preferIpv6) {
             Text("Prefer IPv6")
         }

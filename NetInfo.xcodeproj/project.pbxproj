@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F0CA8DE2A559656006C0FA0 /* NetInfoMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CA8DD2A559656006C0FA0 /* NetInfoMenu.swift */; };
+		4F0E1B7E2A57055B009825E7 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 4F0E1B7D2A57055B009825E7 /* LaunchAtLogin */; };
 		4F1308F12A547F45008B4F08 /* NetInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1308F02A547F45008B4F08 /* NetInfoApp.swift */; };
 		4F1308F32A547F45008B4F08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1308F22A547F45008B4F08 /* ContentView.swift */; };
 		4F1308F52A547F46008B4F08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1308F42A547F46008B4F08 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F0E1B7E2A57055B009825E7 /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +93,9 @@
 			dependencies = (
 			);
 			name = NetInfo;
+			packageProductDependencies = (
+				4F0E1B7D2A57055B009825E7 /* LaunchAtLogin */,
+			);
 			productName = NetInfo;
 			productReference = 4F1308ED2A547F45008B4F08 /* NetInfo.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +124,9 @@
 				Base,
 			);
 			mainGroup = 4F1308E42A547F44008B4F08;
+			packageReferences = (
+				4F0E1B7C2A57055B009825E7 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+			);
 			productRefGroup = 4F1308EE2A547F45008B4F08 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -274,12 +282,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NetInfo/NetInfo.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NetInfo/Preview Content\"";
-				DEVELOPMENT_TEAM = 9B4UYRV7JN;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 9B4UYRV7JN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -291,9 +300,10 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.freising.NetInfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -306,12 +316,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NetInfo/NetInfo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NetInfo/Preview Content\"";
-				DEVELOPMENT_TEAM = 9B4UYRV7JN;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 9B4UYRV7JN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -323,7 +334,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ch.freising.NetInfo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -354,6 +365,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4F0E1B7C2A57055B009825E7 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4F0E1B7D2A57055B009825E7 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4F0E1B7C2A57055B009825E7 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4F1308E52A547F44008B4F08 /* Project object */;
 }
