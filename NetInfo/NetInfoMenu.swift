@@ -7,20 +7,9 @@
 
 import SwiftUI
 
-/*
- createDisplayString(interfaceName: selectedInterface, preferIpv6: preferIpv6, showHostName: showHostName, hostName: hostName, truncLength: truncLength) ?? "NetInfo"
- */
-
 // extend String to allow truncating
 // from https://gist.github.com/budidino/8585eecd55fd4284afaaef762450f98e
 extension String {
-  /*
-   Truncates the string to the specified length number of characters and appends an optional trailing string if longer.
-   - Parameter length: Desired maximum lengths of a string
-   - Parameter trailing: A 'String' that will be appended after the truncation.
-    
-   - Returns: 'String' object.
-  */
   func trunc(length: Int, trailing: String = "…") -> String {
     return (self.count > length) ? self.prefix(length) + trailing : self
   }
@@ -57,13 +46,17 @@ struct NetInfoMenu: View {
     private func refresh() {
         interfaces = getNetworkInterfaces()!
     }
+    
+    private func getCurrentInterface() -> InterfaceWithIP {
+        return interfaces.first {$0.name == selectedInterface}!
+    }
    
     
     var body: some View {
         VStack {
             Group {
-                Text("IPv4: \(interfaces.first { $0.name == selectedInterface}!.ipv4Addr ?? "")")
-                Text("IPv6: \(interfaces.first { $0.name == selectedInterface}!.ipv6Addr ?? "")")
+                Text("IPv4: \(getCurrentInterface().ipv4Addr ?? "")")
+                Text("IPv6: \(getCurrentInterface().ipv6Addr ?? "")")
                 Text("Host: \(hostName)")
                 
                 Button(action: refresh) {
@@ -73,7 +66,7 @@ struct NetInfoMenu: View {
                 Button(action: {
                     let pasteBoard = NSPasteboard.general
                     pasteBoard.clearContents()
-                    pasteBoard.setString(createDisplayString(ipAddr: interfaces.first { $0.name == selectedInterface}!.getIP(preferIpv6: preferIpv6), showHostName: showHostName, hostName: hostName, truncLength: truncLength) ?? "", forType: .string)
+                    pasteBoard.setString(createDisplayString(ipAddr: getCurrentInterface().getIP(preferIpv6: preferIpv6), showHostName: showHostName, hostName: hostName, truncLength: truncLength) ?? "", forType: .string)
                 }) {
                     Text("Copy IP to clipboard")
                 }.keyboardShortcut("c")
@@ -110,14 +103,7 @@ struct NetInfoMenu: View {
 }
 
 
-
-func checkInterface(interface: InterfaceWithIP, interfaceName: String) -> Bool {
-    return interface.name == interfaceName
-}
-
-
-
-func createDisplayList(interfaces: Set<InterfaceWithIP>, preferIpv6: Bool) -> Dictionary<String, String> {
+private func createDisplayList(interfaces: Set<InterfaceWithIP>, preferIpv6: Bool) -> Dictionary<String, String> {
     // Use dictionary to map interfaces to IPs and remove duplicates
     var displayList: Dictionary<String, String> = Dictionary()
     for interface in interfaces {
@@ -159,7 +145,7 @@ func getNetworkInterfaces() -> Set<InterfaceWithIP>? {
 
 // from https://stackoverflow.com/questions/30748480/swift-get-devices-wifi-ip-address
 // Return IP address of Network interface as a String, or `nil`
-func getNetworkAddress(interfaceName: String, ipv6: Bool = false) -> String? {
+private func getNetworkAddress(interfaceName: String, ipv6: Bool = false) -> String? {
     var address : String?
 
     // Get list of all interfaces on the local machine:
