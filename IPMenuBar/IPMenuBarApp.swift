@@ -9,7 +9,7 @@ import SwiftUI
 import LaunchAtLogin
 
 @main
-struct NetInfoApp: App {
+struct IPMenuBarApp: App {
     @State var interfaces: Set<InterfaceWithIP>
     @State var selectedInterface: String
     @State var preferIpv6: Bool
@@ -33,7 +33,7 @@ struct NetInfoApp: App {
     
     var body: some Scene {
         MenuBarExtra(createDisplayString(ipAddr: interfaces.first { $0.name == selectedInterface}!.getIP(preferIpv6: preferIpv6), showHostName: showHostName, hostName: hostName, truncLength: truncLength) ?? "NetInfo") {
-            NetInfoMenu(interfaces: $interfaces, selectedInterface: $selectedInterface,preferIpv6: $preferIpv6, showHostName: $showHostName, hostName: $hostName, truncLength: $truncLength, displayString: $displayString)
+            IPMenuBarView(interfaces: $interfaces, selectedInterface: $selectedInterface,preferIpv6: $preferIpv6, showHostName: $showHostName, hostName: $hostName, truncLength: $truncLength, displayString: $displayString)
         }
 
         Window("Options", id: "options") {

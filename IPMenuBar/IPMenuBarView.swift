@@ -33,7 +33,7 @@ struct InterfaceWithIP: Hashable{
     }
 }
 
-struct NetInfoMenu: View {
+struct IPMenuBarView: View {
     @Environment(\.openWindow) var openWindow
     @Binding var interfaces: Set<InterfaceWithIP>
     @Binding var selectedInterface: String

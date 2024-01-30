@@ -7,23 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F0CA8DE2A559656006C0FA0 /* NetInfoMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CA8DD2A559656006C0FA0 /* NetInfoMenu.swift */; };
+		4F0CA8DE2A559656006C0FA0 /* IPMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CA8DD2A559656006C0FA0 /* IPMenuBarView.swift */; };
 		4F0E1B7E2A57055B009825E7 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 4F0E1B7D2A57055B009825E7 /* LaunchAtLogin */; };
-		4F1308F12A547F45008B4F08 /* NetInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1308F02A547F45008B4F08 /* NetInfoApp.swift */; };
-		4F1308F32A547F45008B4F08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1308F22A547F45008B4F08 /* ContentView.swift */; };
+		4F1308F12A547F45008B4F08 /* IPMenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1308F02A547F45008B4F08 /* IPMenuBarApp.swift */; };
 		4F1308F52A547F46008B4F08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1308F42A547F46008B4F08 /* Assets.xcassets */; };
 		4F1308F82A547F46008B4F08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1308F72A547F46008B4F08 /* Preview Assets.xcassets */; };
 		4F8D78FA2A55E3E7008D5186 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8D78F92A55E3E7008D5186 /* OptionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4F0CA8DD2A559656006C0FA0 /* NetInfoMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetInfoMenu.swift; sourceTree = "<group>"; };
-		4F1308ED2A547F45008B4F08 /* NetInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F1308F02A547F45008B4F08 /* NetInfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetInfoApp.swift; sourceTree = "<group>"; };
-		4F1308F22A547F45008B4F08 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4F0CA8DD2A559656006C0FA0 /* IPMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPMenuBarView.swift; sourceTree = "<group>"; };
+		4F1308ED2A547F45008B4F08 /* IPMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F1308F02A547F45008B4F08 /* IPMenuBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPMenuBarApp.swift; sourceTree = "<group>"; };
 		4F1308F42A547F46008B4F08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F1308F72A547F46008B4F08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4F1308F92A547F46008B4F08 /* NetInfo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NetInfo.entitlements; sourceTree = "<group>"; };
+		4F1308F92A547F46008B4F08 /* IPMenuBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IPMenuBar.entitlements; sourceTree = "<group>"; };
 		4F8D78F92A55E3E7008D5186 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,7 +40,7 @@
 		4F1308E42A547F44008B4F08 = {
 			isa = PBXGroup;
 			children = (
-				4F1308EF2A547F45008B4F08 /* NetInfo */,
+				4F1308EF2A547F45008B4F08 /* IPMenuBar */,
 				4F1308EE2A547F45008B4F08 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,23 +48,22 @@
 		4F1308EE2A547F45008B4F08 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4F1308ED2A547F45008B4F08 /* NetInfo.app */,
+				4F1308ED2A547F45008B4F08 /* IPMenuBar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4F1308EF2A547F45008B4F08 /* NetInfo */ = {
+		4F1308EF2A547F45008B4F08 /* IPMenuBar */ = {
 			isa = PBXGroup;
 			children = (
-				4F1308F02A547F45008B4F08 /* NetInfoApp.swift */,
-				4F1308F22A547F45008B4F08 /* ContentView.swift */,
+				4F1308F02A547F45008B4F08 /* IPMenuBarApp.swift */,
 				4F1308F42A547F46008B4F08 /* Assets.xcassets */,
-				4F1308F92A547F46008B4F08 /* NetInfo.entitlements */,
+				4F1308F92A547F46008B4F08 /* IPMenuBar.entitlements */,
 				4F1308F62A547F46008B4F08 /* Preview Content */,
-				4F0CA8DD2A559656006C0FA0 /* NetInfoMenu.swift */,
+				4F0CA8DD2A559656006C0FA0 /* IPMenuBarView.swift */,
 				4F8D78F92A55E3E7008D5186 /* OptionsView.swift */,
 			);
-			path = NetInfo;
+			path = IPMenuBar;
 			sourceTree = "<group>";
 		};
 		4F1308F62A547F46008B4F08 /* Preview Content */ = {
@@ -80,9 +77,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4F1308EC2A547F45008B4F08 /* NetInfo */ = {
+		4F1308EC2A547F45008B4F08 /* IPMenuBar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4F1308FC2A547F46008B4F08 /* Build configuration list for PBXNativeTarget "NetInfo" */;
+			buildConfigurationList = 4F1308FC2A547F46008B4F08 /* Build configuration list for PBXNativeTarget "IPMenuBar" */;
 			buildPhases = (
 				4F1308E92A547F45008B4F08 /* Sources */,
 				4F1308EA2A547F45008B4F08 /* Frameworks */,
@@ -92,12 +89,12 @@
 			);
 			dependencies = (
 			);
-			name = NetInfo;
+			name = IPMenuBar;
 			packageProductDependencies = (
 				4F0E1B7D2A57055B009825E7 /* LaunchAtLogin */,
 			);
 			productName = NetInfo;
-			productReference = 4F1308ED2A547F45008B4F08 /* NetInfo.app */;
+			productReference = 4F1308ED2A547F45008B4F08 /* IPMenuBar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,14 +105,14 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					4F1308EC2A547F45008B4F08 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
-			buildConfigurationList = 4F1308E82A547F44008B4F08 /* Build configuration list for PBXProject "NetInfo" */;
+			buildConfigurationList = 4F1308E82A547F44008B4F08 /* Build configuration list for PBXProject "IPMenuBar" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -131,7 +128,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4F1308EC2A547F45008B4F08 /* NetInfo */,
+				4F1308EC2A547F45008B4F08 /* IPMenuBar */,
 			);
 		};
 /* End PBXProject section */
@@ -153,9 +150,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F1308F32A547F45008B4F08 /* ContentView.swift in Sources */,
-				4F0CA8DE2A559656006C0FA0 /* NetInfoMenu.swift in Sources */,
-				4F1308F12A547F45008B4F08 /* NetInfoApp.swift in Sources */,
+				4F0CA8DE2A559656006C0FA0 /* IPMenuBarView.swift in Sources */,
+				4F1308F12A547F45008B4F08 /* IPMenuBarApp.swift in Sources */,
 				4F8D78FA2A55E3E7008D5186 /* OptionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,9 +192,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -256,9 +254,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -281,13 +281,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = NetInfo/NetInfo.entitlements;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = IPMenuBar/IPMenuBar.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"NetInfo/Preview Content\"";
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"IPMenuBar/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = 9B4UYRV7JN;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -301,10 +303,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.freising.NetInfo;
+				MARKETING_VERSION = 0.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.freising.IPMenuBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -315,13 +318,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = NetInfo/NetInfo.entitlements;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = IPMenuBar/IPMenuBar.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"NetInfo/Preview Content\"";
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"IPMenuBar/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = 9B4UYRV7JN;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -335,10 +340,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.freising.NetInfo;
+				MARKETING_VERSION = 0.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.freising.IPMenuBar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -347,7 +353,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4F1308E82A547F44008B4F08 /* Build configuration list for PBXProject "NetInfo" */ = {
+		4F1308E82A547F44008B4F08 /* Build configuration list for PBXProject "IPMenuBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4F1308FA2A547F46008B4F08 /* Debug */,
@@ -356,7 +362,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4F1308FC2A547F46008B4F08 /* Build configuration list for PBXNativeTarget "NetInfo" */ = {
+		4F1308FC2A547F46008B4F08 /* Build configuration list for PBXNativeTarget "IPMenuBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4F1308FD2A547F46008B4F08 /* Debug */,
